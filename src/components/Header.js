@@ -40,7 +40,7 @@ export default function Header() {
                 <button type="button" className="btn btn-title" onClick={connectWallet}>Connect Wallet</button>
             }
             <div className="title-mid"></div> 
-            <h3 className="dappTitle title-right" >The DEX 💱</h3>
+            <h3 className="dappTitle title-right" >ADRISWAP</h3>
                 
            
         </div>

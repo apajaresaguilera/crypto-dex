@@ -5,26 +5,16 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract Exchange is Ownable{
-    //Swap tokens 
-    //Stake tokens
-    constructor() {
+    address tokenAddress;
+    constructor(address _tokenAddress) {
+        require(_tokenAddress != address(0), "Invalid token address");
+        tokenAddress = _tokenAddress;
     }
 
 
-    function addPairLiquidity(address _tokenA, address _tokenB, uint256 _tokenAAmount, uint256 _tokenBAmount) public {
-        require(_tokenA != address(0), "invalid token address");
-        require(_tokenB != address(0), "invalid token address");
-
-        IERC20 tokenA = IERC20(_tokenA);
-        tokenA.transferFrom(msg.sender, address(this), _tokenAAmount);
-
-        IERC20 tokenB = IERC20(_tokenB);
-        tokenB.transferFrom(msg.sender, address(this), _tokenBAmount);
-    }
-
-
-    function getTokenBalance(address _tokenAddress) public view returns(uint256) {
-        return IERC20(_tokenAddress).balanceOf(address(this));
+    function addLiquidity(uint256 _tokenAmount) public payable{
+        IERC0 token = IERC20(tokenAddress);
+        token.transferFrom(msg.sender, address(this), _tokenAmount);
     }
 
 
@@ -39,4 +29,32 @@ contract Exchange is Ownable{
         return IERC20(_tokenAddress).balanceOf(address(this));
     }
 
+    function getAmount(uint256 inputAmount,uint256 inputReserve,uint256 outputReserve) private pure returns (uint256) {
+        require(inputReserve > 0 && outputReserve > 0, "invalid reserves");
+        return (inputAmount * outputReserve) / (inputReserve + inputAmount);
+    }
+
+    function getTokenAmount(uint256 _ethAmount) public view returns (uint256) {
+        require(_ethAmount > 0, "ETH amount can't be 0");
+
+        uint256 tokenReserve = getReserve();
+
+        return getAmount(_ethSold, address(this).balance, tokenReserve);
+    }
+
+    function getEthAmount(uint256 _tokenAmount) public view returns (uint256) {
+        require(_tokenAmount > 0, "Token amount is too small");
+
+        uint256 tokenReserve = getReserve();
+
+        return getAmount(_tokenAmount, tokenReserve, address(this).balance);
+    }
+    function swapEthForToken() public payable {
+        uint256 tokens = getTokenAmount(msg.value);
+        IERC20(token).transferFrom(address(this), msg.sender, tokens);
+    }
+    function swapTokenForEth(uint256 _tokenAmount) public {
+        uint256 totalEth = getEthAmount(_tokenAmount);
+        address(this).transfer(msg.sender, totalEth);
+    }
 }

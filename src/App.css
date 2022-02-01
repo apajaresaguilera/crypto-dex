@@ -8,7 +8,7 @@
 .btn-title{
     grid-area: button;
     background-color: white;
-    width: 20%;
+    max-width: 200px;
 }
 
 .title-mid{
@@ -16,7 +16,7 @@
 }
 .dappTitle{
     grid-area: logo;
-    color: white;
+    color: rgb(255, 82, 169);
 }
 html, body {
     margin:0px;
@@ -113,16 +113,33 @@ select{
     border-radius: 100px;
     border:0px;
     outline:0px;
+    grid-area: select1;
 }
 .selection{
 background-color: rgb(214, 214, 214);
 border-radius: 100px;
     grid-area: input1;
+    display: grid;
+    grid-template-areas: "logo1 select1 ";
+    padding: 10px;
+    grid-template-columns: 1fr   1fr;
+   grid-template-rows: 1fr ;
+}
+.logo1{
+    grid-area: logo1;
+}.logo2{
+    grid-area: logo2;
 }
 .selection2{
     background-color: rgb(214, 214, 214);
     border-radius: 100px;
     grid-area: input2;
+    display: grid;
+    padding: 10px;
+
+    grid-template-areas: "logo2 select2";
+    grid-template-columns: 1fr   1fr;
+    grid-template-rows: 1fr ;
 }
 .text1{
     background-color: transparent;
@@ -134,8 +151,9 @@ border-radius: 100px;
     
 }
 img{
-    width: 20px;
-    height: 20px;
+    max-width: 40px;
+    max-height: 40px;
+    margin-top: 10px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: grey;
@@ -148,6 +166,8 @@ img{
     border-radius: 100px;
     border:0px;
     outline:0px;
+    grid-area: select2;
+
 }
 .text2{
     background-color: transparent;

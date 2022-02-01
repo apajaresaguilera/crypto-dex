@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ethLogo from '../assets/ETH.png'
-import daiLogo from '../assets/DAI.png'
-import uniLogo from '../assets/UNI.png'
+import dopeLogo from '../assets/DOPE.png'
 
 export default function Main() {
 
@@ -17,24 +16,14 @@ export default function Main() {
         }
        
         break;
-        case "DAI":
+        case "DOPE":
           if(which==0){
-            setFirstCoin(daiLogo);
+            setFirstCoin(dopeLogo);
           }else{
-            setSecondCoin(daiLogo);
+            setSecondCoin(dopeLogo);
           }
-
-        
         break;
-        case "UNI":
-          if(which==0){
-            setFirstCoin(uniLogo);
-          }else{
-            setSecondCoin(uniLogo);
-          }
-
         
-        break;
     
       default:
         break;
@@ -46,11 +35,11 @@ export default function Main() {
           <div className="amount-container cont1">
           <input type="text"  className='text1' placeholder="0.0"/>
                 <div className="selection">
-                <img  src={firstCoin} alt="Coin" />
+                <img className='logo1'  src={firstCoin} alt="Coin" />
                   <select onChange={(event) =>  checkCoin(0, event.target.value)} id="input1" name="input1" className='input1'>
                     <option value="ETH">ETH</option>
-                    <option value="DAI">DAI</option>
-                    <option value="UNI">UNI</option>
+                    <option value="DOPE">DOPE</option>
+                    
                   </select>
                 </div>
              
@@ -62,11 +51,10 @@ export default function Main() {
           <div className="amount-container cont2">
           <input type="text"  className='text2' placeholder="0.0"/>
           <div className="selection2">
-            <img  src={secondCoin} alt="Coin" />
+            <img className='logo2'  src={secondCoin} alt="Coin" />
             <select onChange={(event) =>  checkCoin(1, event.target.value)}  id="cars" name="input2" className='input2'>
                   <option value="ETH">ETH</option>
-                  <option value="DAI">DAI</option>
-                  <option value="UNI">UNI</option>
+                  <option value="DOPE">DOPE</option>
               </select>
           </div>
               
