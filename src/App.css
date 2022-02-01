@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
+.headerContainer{
+    width: 100vw;
+    margin: 10px;
+   display: grid;
+   grid-template-areas: "button mid logo";
+   grid-column: 1fr 4fr 1fr;
+}
+.btn-title{
+    grid-area: button;
+    background-color: white;
+    width: 20%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title-mid{
+    grid-area: mid;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dappTitle{
+    grid-area: logo;
+    color: white;
+}
+html, body {
+    margin:0px;
+    height:100%;
   }
+body{
+    background-color: rgb(255, 240, 254);
+    background-size: cover;
+    
+}
+.main-container{
+    text-align: center;
+    height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+select{
+    max-width: 150px !important;
+    background-color: transparent;
+    color: white;
+    border-style: none;
 }
 
-.App-link {
-  color: #61dafb;
+.arrow-container{
+    border-style: solid;
+    border-color: white;
+}
+.glass-container {
+    justify-content: center;
+    text-align: center;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 5%;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15); 
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 1);  
+    backdrop-filter: blur(2px);
+    
+    display: grid;
+    grid-template-areas: "container1"
+                        "arrow"
+                        "container2"
+                        "buttonswap";
+                        
+    grid-template-columns: 1fr;
+   grid-template-rows: 1fr 0.1fr 1fr 0.2fr;
+   padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.cont1{
+    text-align: center;
+    grid-area: container1;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(238, 238, 238);
+    display: grid;
+    grid-template-areas: "text1  input1"
+                        ".  balance1";
+                        
+    grid-template-columns: 5fr   1fr;
+   grid-template-rows: 1fr  1fr ;
+}
+.cont2{
+    text-align: center;
+    grid-area: container2;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(238, 238, 238);
+    display: grid;
+    grid-template-areas: "text2 input2 "
+                        ". balance2";
+                        
+    grid-template-columns: 5fr   1fr;
+   grid-template-rows: 1fr  1fr ;
+}
+.separator{
+    grid-area: separator;
+}
+.separator2{
+    grid-area: separator2;
+}
+.balance1{
+    grid-area: balance1;
+    margin-top: 20px;
+
+}
+.balance2{
+    grid-area: balance2;
+    margin-top: 20px;
+}
+.input1{
+    background-color: transparent;
+    color: black;
+    padding: 20px;
+    border-radius: 100px;
+    border:0px;
+    outline:0px;
+}
+.selection{
+background-color: rgb(214, 214, 214);
+border-radius: 100px;
+    grid-area: input1;
+}
+.selection2{
+    background-color: rgb(214, 214, 214);
+    border-radius: 100px;
+    grid-area: input2;
+}
+.text1{
+    background-color: transparent;
+    border: none;
+    grid-area: text1;
+    outline: none;
+    font-weight: bold;
+    font-size:30px;
+    
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: grey;
+    opacity: 1; /* Firefox */
   }
-  to {
-    transform: rotate(360deg);
-  }
+.input2{
+    background-color: transparent;
+    color: black;
+    padding: 20px;
+    border-radius: 100px;
+    border:0px;
+    outline:0px;
 }
+.text2{
+    background-color: transparent;
+    border: none;
+    grid-area: text2;
+    outline: none;
+    font-size:30px;
+    font-weight: bold;
+}
+
+
+.arrow-container{
+    grid-area: arrow;
+    border-radius: 50px;
+    background-color: rgb(238, 238, 238);
+    margin-left: 45%;
+    margin-right: 45%;
+
+}
+.btn-swap{
+    border: 1px;
+    border-style: solid;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    grid-area: buttonswap;
+    background-color: rgb(255, 177, 216);
+    
+    outline: none;
+    font-weight: bold;
+}
+.btn{
+    color: rgb(255, 82, 169);
+    background-color: rgb(255, 177, 216);
+    font-size: 20px;
+}
+.btn:hover{
+    background-color: rgb(253, 160, 207);
+    color: rgb(252, 76, 164);
+}
+.btn-swap:active, .btn-swap:focus,.input1:active{
+    box-shadow: none;
+  }
