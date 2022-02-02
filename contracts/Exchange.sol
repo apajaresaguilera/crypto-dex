@@ -51,10 +51,13 @@ contract Exchange is Ownable{
     }
     function swapEthForToken() public payable {
         uint256 tokens = getTokenAmount(msg.value);
+        payable(address(this)).transfer(msg.value);
         IERC20(tokenAddress).transferFrom(address(this), msg.sender, tokens);
     }
     function swapTokenForEth(uint256 _tokenAmount) public {
+        require(_tokenAmount >= 1, "Can't swap less than one token");
         uint256 totalEth = getEthAmount(_tokenAmount);
+        IERC20(tokenAddress).transferFrom(msg.sender, address(this), _tokenAmount);
         payable(msg.sender).transfer(totalEth);
 
     }

@@ -18,13 +18,12 @@ export default function Main() {
 
   const provider =  new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
-  const tokenContractAddress = "0xdF1e8FBbd8cf94F0AeF6f8639B90cF1Bc11177AE";
-  const exchangeContractAddress = "0xdE6194c2eC92035f6164872184FC37E74A8a11E4";
+  const tokenContractAddress = "0xE576055062E70Db246A8388a792024365ee74E88";
+  const exchangeContractAddress = "0x5D87560F962E377a723ffc0B1B7c61100b6a4d8E";
   const [tokenContract, setTokenContract] = useState(new ethers.Contract(tokenContractAddress, tokenContractJson.abi, signer));
   const [exchangeContract, setexchangeContract] = useState(new ethers.Contract(exchangeContractAddress, exchangeContractJson.abi, signer));
   
   const [account, setAccount] = useState("");
-
   async function computeBalance(value) {
     console.log(value)
     if(0!=parseFloat(value)){
@@ -51,13 +50,15 @@ export default function Main() {
 
   }
   const isMetaMaskConnected = async () => {
-    
+   
 
     //console.log('checking...')
     const accounts = await provider.listAccounts();
     if(accounts.length > 0){
         setAccount(accounts[0]);
         getBalances(accounts[0]);
+        const value = await tokenContract.balanceOf(accounts[0]);
+        console.log(value.toString())
 
     }else{
         setAccount("");
@@ -85,7 +86,21 @@ export default function Main() {
   };
   const handleAccountsChanged = (accounts) => {
       isMetaMaskConnected();
-    };
+  };
+  const handleSwap = async () => {
+    const amount = document.getElementById("text1").value.toString();
+    if(nameOne == "DOPE"){
+      const tx = await exchangeContract.swapTokenForEth(parseFloat(amount));
+      await tx.wait();
+      alert("Swapped " + amount + " tokens for ETH!")
+      
+    }else{
+      const tx = await exchangeContract.swapEthForToken({value: ethers.utils.parseEther(amount.toString())});
+      await tx.wait();
+      alert("Swapped " + amount + " ETH for tokens!")
+    
+    }
+  }
   useEffect(()=>{
       ethereum.on('accountsChanged', handleAccountsChanged);
       isMetaMaskConnected();
@@ -121,7 +136,7 @@ export default function Main() {
              
           <h6 className='balance2'>Balance: {lowerBalance}</h6>
           </div>
-          <button className='btn btn-swap'>Swap!</button>
+          <button className='btn btn-swap' onClick={handleSwap}>Swap!</button>
           <input  type="text"  className='textAllow' id='textAllow' placeholder="0.0"/>
           <button className='btn btn-allow' onClick={ handleAllow}>Allow</button>
 
