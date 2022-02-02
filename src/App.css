@@ -58,13 +58,34 @@ select{
     grid-template-areas: "container1"
                         "arrow"
                         "container2"
-                        "buttonswap";
+                        "buttonswap"
+                        "textAllow"
+                        "buttonAllow";
                         
     grid-template-columns: 1fr;
-   grid-template-rows: 1fr 0.1fr 1fr 0.2fr;
+   grid-template-rows: 1fr 0.1fr 1fr 0.2fr 0.2fr 0.2fr;
    padding: 20px;
 }
-
+.textAllow{
+    grid-area: textAllow;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size:30px;
+}
+.btn-allow{
+    grid-area: buttonAllow;
+    border: 1px;
+    border-style: solid;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(255, 177, 216);
+    
+    outline: none;
+    font-weight: bold;
+}
 .cont1{
     text-align: center;
     grid-area: container1;
@@ -178,7 +199,9 @@ img{
     font-weight: bold;
 }
 
-
+.arrow-container:hover{
+    cursor: pointer;
+}
 .arrow-container{
     grid-area: arrow;
     border-radius: 50px;
@@ -199,6 +222,7 @@ img{
     outline: none;
     font-weight: bold;
 }
+
 .btn{
     color: rgb(255, 82, 169);
     background-color: rgb(255, 177, 216);
