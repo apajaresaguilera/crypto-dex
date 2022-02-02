@@ -1,15 +1,11 @@
-# Basic Sample Hardhat Project
+# Crypto Decentralized Exchange
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+Crypto exchange that allows user to swap between ETH and DOPE (a custom ERC20 token).
+The exchange allows the user to add liquidity and swap between currencies. They are 
+also aware of the amounts in the exchange, as the DEX is a constant product market maker
+(meaning it follows the constant product formula x * y = k to calculate the prices).
 
-Try running some of the following tasks:
+Make sure to add some liquidity and try it!
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+![DEX](https://i.ibb.co/55xLT4N/dex-1.png)
+
