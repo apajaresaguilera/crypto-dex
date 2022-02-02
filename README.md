@@ -7,5 +7,5 @@ also aware of the amounts in the exchange, as the DEX is a constant product mark
 
 Make sure to add some liquidity and try it!
 
-![DEX](https://i.ibb.co/55xLT4N/dex-1.png)
+![DEX](https://i.ibb.co/XbmCP0H/dex-1.png)
 
